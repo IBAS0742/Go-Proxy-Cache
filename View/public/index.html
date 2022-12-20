@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+        /*#map {*/
+        /*    width: 100%;*/
+        /*    height: 100vh;*/
+        /*}*/
+        /*@supports (-webkit-touch-callout: none) {*/
+        /*    #map {*/
+        /*        min-height: -webkit-fill-available;*/
+        /*    }*/
+        /*}*/
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+    </style>
+</head>
+<body>
+<noscript>
+</noscript>
+<div id="app">
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+</div>
+<!-- built files will be auto injected -->
+<script>
+    // window.onload = function () {
+    //     if (window.__load__) {
+    //         return;
+    //     }
+    //     let links = document.getElementsByTagName('link');
+    //     let scripts = {};
+    //     new Array(...document.getElementsByName('script')).forEach(s => {
+    //         scripts[s.split('?')[0]] = 1;
+    //     });
+    //     for (let i = 0;i < links.length;i++) {
+    //         let link = links[i];
+    //         if (link.getAttribute('as') === 'script') {
+    //             console.log(links[i]);
+    //             let src = link.getAttribute('href');
+    //             if (!(src.split('?')[0] in scripts)) {
+    //                 let sc = document.createElement('script');
+    //                 sc.src = src;
+    //                 document.head.appendChild(sc);
+    //             }
+    //         }
+    //     }
+    // }
+    // window.initOk = function (ec,setOption) {
+    //     window.ec = ec;
+    //     window.setOption = setOption;
+    //     setTimeout(() => {
+    //         ec.resize();
+    //     },100);
+    // }
+    console.log(location.href);
+</script>
+
+</body>
+</html>
