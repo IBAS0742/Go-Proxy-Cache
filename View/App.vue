@@ -18,8 +18,8 @@
                 <el-main>
 <!--                    <component :is="current"></component>-->
                     <ProxyApi></ProxyApi>
-                    <div class="app-main">
-                    </div>
+<!--                    <div class="app-main">-->
+<!--                    </div>-->
                 </el-main>
             </el-container>
         </el-container>
@@ -96,5 +96,8 @@
     box-shadow   : inset 0 0 0px rgba(0, 0, 0, 0.2);
     background   : #ededed;
     border-radius: 10px;
+}
+.el-main {
+  overflow: unset;
 }
 </style>

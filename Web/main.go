@@ -3,7 +3,9 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"go-proxy-cache/Web/MDB"
 	"go-proxy-cache/Web/Server"
+	"go-proxy-cache/Web/Utils"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -13,6 +15,9 @@ import (
 )
 
 func main() {
+	db := MDB.DB{}
+	db.InitDb("D:\\codes\\golang\\Go-Proxy-Cache\\Web\\db.db")
+
 	server := Server.MainServer{
 		Port: 8090,
 		CORS: Server.DefaultCors,
@@ -20,33 +25,37 @@ func main() {
 		//StaticPath:   nil,
 		ImportStatic: func() {},
 	}
-	server.AddProxyApi(Server.ProxyApi{
-		Group: "table",
-		//Path:       "system/user/list",
-		Path:       "*",
-		Method:     http.MethodGet,
-		Uri:        "http://172.20.109.155:8080/",
-		Cache:      true,
-		CacheByURI: true,
-	})
-	server.AddProxyApi(Server.ProxyApi{
-		Group: "table",
-		//Path:       "system/user/list",
-		Path:       "captchaImage",
-		Method:     http.MethodGet,
-		Uri:        "http://172.20.109.155:8080/",
-		Cache:      false,
-		CacheByURI: false,
-	})
-	server.AddProxyApi(Server.ProxyApi{
-		Group: "table",
-		//Path:       "system/user/list",
-		Path:       "login",
-		Method:     http.MethodPost,
-		Uri:        "http://172.20.109.155:8080/",
-		Cache:      false,
-		CacheByURI: false,
-	})
+
+	Utils.LoadProxyApi(db, &server)
+
+	//server.AddProxyApi(Server.ProxyApi{
+	//	Group: "table",
+	//	//Path:       "system/user/list",
+	//	Path:       "*",
+	//	Method:     http.MethodGet,
+	//	Uri:        "http://172.20.109.155:8080/",
+	//	Cache:      true,
+	//	CacheByURI: true,
+	//})
+	//server.AddProxyApi(Server.ProxyApi{
+	//	Group: "table",
+	//	//Path:       "system/user/list",
+	//	Path:       "captchaImage",
+	//	Method:     http.MethodGet,
+	//	Uri:        "http://172.20.109.155:8080/",
+	//	Cache:      false,
+	//	CacheByURI: false,
+	//})
+	//server.AddProxyApi(Server.ProxyApi{
+	//	Group: "table",
+	//	//Path:       "system/user/list",
+	//	Path:       "login",
+	//	Method:     http.MethodPost,
+	//	Uri:        "http://172.20.109.155:8080/",
+	//	Cache:      false,
+	//	CacheByURI: false,
+	//})
+
 	server.RunServer()
 }
 

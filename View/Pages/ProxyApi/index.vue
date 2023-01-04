@@ -34,6 +34,18 @@
                 :prop="p.prop"
                 :label="p.label">
             </el-table-column>
+            <el-table-column
+                label="操作"
+                width="100">
+                <template slot-scope="scope">
+                    <el-button type="text" size="small">查看接口缓存</el-button>
+                    <el-button v-show="scope.row.New"
+                        @click="addProxyApi(scope.row)"
+                               type="text" size="small">添加接口</el-button>
+                    <el-button  v-show="!scope.row.New"
+                                type="text" size="small">编辑</el-button>
+                </template>
+            </el-table-column>
         </el-table>
     </div>
 </template>
@@ -125,12 +137,13 @@ export default {
                     arr.push({
                         ...ret.Data[i],
                         id: i
-                    })
+                    });
                 }
-                // console.log(ret);
+                console.log(arr);
                 this.tableData.splice(0,this.tableData.length,...arr);
             });
-        }
+        },
+        addProxyApi() {}
     },
     mounted() {
         this.initProxyTableData();

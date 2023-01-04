@@ -13,6 +13,7 @@ import (
 
 type Boolean bool
 type ProxyApi struct {
+	Id     string
 	New    bool
 	Group  string // 组 （用于指定 host） \
 	Path   string // 请求路径  		    |=> 用于唯一标识一个请求
@@ -23,6 +24,8 @@ type ProxyApi struct {
 	CacheByURI    Boolean
 	CacheWithBody Boolean
 	ParentId      string
+	//UnValid bool
+	//Record bool
 }
 
 func (b Boolean) Value() bool {
